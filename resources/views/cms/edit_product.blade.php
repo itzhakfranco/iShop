@@ -1,83 +1,80 @@
 @extends('cms.cms_master') @section('cms_content')
 
     <div class="row">
-        <div class="col-md-8">
-            <section class="section-content padding-y">
-                <div class="card mx-auto">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h4 class="card-title d-flex mb-4">Edit Product</h4>
-                            </div>
-                            <div class="col-md-6">
-
-                                <a class="btn btn-dark btn-sm float-right"
-                                    href="{{ url('/shop/' . $product->cat_url . '/' . $product->url) }}" target="_blank">
-                                    <i class="fas fa-binoculars mr-1"></i> View Product
-                                </a>
-                            </div>
+        <div class="col-md-8 mt-4">
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="card-title d-flex mb-4">Edit Product</h4>
                         </div>
-                        <form action="{{ url('cms/products/' . $product->id) }}" method="POST"
-                            enctype="multipart/form-data">
+                        <div class="col-md-6">
 
-                            {{ csrf_field() }} {{ method_field('PUT') }}
-
-                            <input type="hidden" name="item_id" value="{{ $product->id }}" />
-
-                            <div class="form-group">
-                                <label for="categorie-id">Category</label>
-
-                                <select name="categorie_id" id="categorie_id" class="form-control">
-
-                                    @foreach ($categories as $category)
-                                        <option @if ($product->categorie_id == $category['id'])
-                                            selected="selected"
-                                    @endif value="{{ $category['id'] }}" >{{ $category['cat_name'] }}
-                                    </option>
-
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="title">Title</label>
-                                <input name="title" id="title" class="form-control origin-text" placeholder="Title"
-                                    type="text" value="{{ $product->product_name }}" />
-                            </div>
-                            <div class="form-group">
-                                <label for="url">URL</label>
-                                <input name="url" id="url" class="form-control target-text" placeholder="URL" type="text"
-                                    value="{{ $product->url }}" />
-                            </div>
-                            <div class="form-group">
-                                <label for="price">Price</label>
-                                <input name="price" id="price" class="form-control" placeholder="Price" type="text"
-                                    value="{{ $product->price }}" />
-                            </div>
-                            <div class="form-group">
-                                <label for="article">Description</label>
-                                <textarea name="article" id="article" class="article form-control" placeholder="Article"
-                                    type="text">
-                                {{ $product->article }}</textarea>
-                            </div>
-
-
-                            <div class="form-group">
-                                <a href="{{ url('cms/products') }}" class="btn btn-primary btn-block">
-                                    Cancel
-                                </a>
-                                <button type="submit" class="btn btn-primary btn-block">
-                                    Update
-                                </button>
-                            </div>
-                        </form>
+                            <a class="btn btn-dark btn-sm float-right"
+                                href="{{ url('/shop/' . $product->cat_url . '/' . $product->url) }}" target="_blank">
+                                <i class="fas fa-binoculars mr-1"></i> View Product
+                            </a>
+                        </div>
                     </div>
+                    <form action="{{ url('cms/products/' . $product->id) }}" method="POST" enctype="multipart/form-data">
+
+                        {{ csrf_field() }} {{ method_field('PUT') }}
+
+                        <input type="hidden" name="item_id" value="{{ $product->id }}" />
+
+                        <div class="form-group">
+                            <label for="categorie-id">Category</label>
+
+                            <select name="categorie_id" id="categorie_id" class="form-control">
+
+                                @foreach ($categories as $category)
+                                    <option @if ($product->categorie_id == $category['id'])
+                                        selected="selected"
+                                @endif value="{{ $category['id'] }}" >{{ $category['cat_name'] }}
+                                </option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input name="title" id="title" class="form-control origin-text" placeholder="Title" type="text"
+                                value="{{ $product->product_name }}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="url">URL</label>
+                            <input name="url" id="url" class="form-control target-text" placeholder="URL" type="text"
+                                value="{{ $product->url }}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input name="price" id="price" class="form-control" placeholder="Price" type="text"
+                                value="{{ $product->price }}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="article">Description</label>
+                            <textarea name="article" id="article" class="article form-control" placeholder="Article"
+                                type="text">
+                            {{ $product->article }}</textarea>
+                        </div>
+
+
+                        <div class="form-group">
+                            <a href="{{ url('cms/products') }}" class="btn btn-primary btn-block">
+                                Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Update
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            </section>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
-            <div class="card mb-3 mt-4">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
+            <div class="card mb-3">
                 <div class="card-header">
-                    <h3><i class="far fa-file-image"></i> Avatar</h3>
+                    <h3><i class="far fa-file-image"></i> Product Image</h3>
                 </div>
 
                 <div class="card-body text-center">

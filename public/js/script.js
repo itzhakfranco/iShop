@@ -1,8 +1,9 @@
 function previewFile() {
-    var file = $("#image").get(0).files[0];
+    const file = $("#image").get(0).files[0];
     if (file) {
+        $("label[for='image']").text(file.name);
 
-        var reader = new FileReader();
+        const reader = new FileReader();
         reader.onload = function () {
             $("#previewImg").attr("src", reader.result);
         };

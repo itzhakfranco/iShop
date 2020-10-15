@@ -12,9 +12,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <link href="{{ asset('css/ui.css') }}" rel="stylesheet" type="text/css" />
-    {{--
-    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
-    --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
     <script>
         const BASE_URL = "{{ url('') }}";
@@ -67,7 +64,7 @@
                     @else
                         <li class="nav-item">
                             <a href="{{ url('user/profile') }}" class="btn btn-dark mx-2">
-                                <i class="far fa-id-badge"></i> {{ Session::get('user_name') }}
+                                <i class="far fa-id-badge"></i> {{ ucfirst(trans(Session::get('user_name'))) }}
                             </a>
                         </li>
                         <li class="nav-item">

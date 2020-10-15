@@ -52,7 +52,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     {{ 'Are you sure you want to delete
-                                                        ' .
+                                                                    ' .
                                                             $item['title'] .
                                                             ' ?' }}
                                                     <p></p>

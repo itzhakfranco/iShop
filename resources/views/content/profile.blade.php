@@ -90,7 +90,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block" disabled="disabled">
+                                        <button type="submit" class="btn btn-primary btn-block save-image"
+                                            disabled="disabled">
                                             Update avatar
                                         </button>
                                     </div>
