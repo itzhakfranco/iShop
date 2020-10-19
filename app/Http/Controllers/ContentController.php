@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MenuRequest;
 use App\Http\Requests\ContentRequest;
-use App\Models\Menu;
 use App\Models\Content;
 use Session;
 

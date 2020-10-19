@@ -7,7 +7,6 @@
                     <div class="card-body">
                         <h4 class="card-title mb-4">Edit Category</h4>
                         <form action="{{ url('cms/categories/' . $category['id']) }}" method="POST">
-
                             <input type="hidden" name="menu_id" value="{{ $category['id'] }}">
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
@@ -16,7 +15,6 @@
                                 <input name="title" id="title" class="form-control origin-text" placeholder="Title"
                                     type="text" value="{{ $category['cat_name'] }}" />
                             </div>
-
                             <div class="form-group">
                                 <label for="url">URL</label>
                                 <input name="url" id="url" class="form-control target-text target-text" placeholder="URL"
@@ -38,8 +36,6 @@
                         </form>
                     </div>
                 </div>
-
-
             </section>
         </div>
     </div>

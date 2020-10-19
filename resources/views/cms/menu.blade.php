@@ -5,7 +5,6 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-4">
 
             <div class="card mb-3">
-
                 <div class="card-header">
                     <span class="float-right"><a href="{{ url('cms/menu/create') }}" class="btn btn-primary btn-sm"><i
                                 class="fas fa-plus"></i> Add New Menu</a></span>
@@ -13,7 +12,6 @@
                 </div>
 
                 <div class="card-body">
-
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
@@ -28,13 +26,9 @@
 
                                 @foreach ($menu as $item)
                                     <tr>
-
                                         <td>{{ $item['mtitle'] }}</td>
                                         <td class="text-center">{{ $item['link'] }}</td>
-
                                         <td class="text-center">{{ $item['url'] }}</td>
-
-
                                         <td class="text-center">
                                             <a href="{{ url('cms/menu/' . $item['id'] . '/edit') }}"
                                                 class="btn btn-primary btn-block btn-sm"><i class="far fa-edit"></i>
@@ -75,20 +69,11 @@
                                         </div>
                                     </div>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
-
-
                 </div>
-                <!-- end card-body -->
-
             </div>
-            <!-- end card -->
-
         </div>
-        <!-- end col -->
-
     </div>
 @endsection

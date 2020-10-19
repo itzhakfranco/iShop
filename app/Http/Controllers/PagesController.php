@@ -8,9 +8,6 @@ use App\Models\Product;
 
 class PagesController extends MainController
 {
-
-
-
     public function home()
     {
 

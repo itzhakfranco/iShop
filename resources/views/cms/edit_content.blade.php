@@ -30,8 +30,6 @@
                                 <textarea name="article" id="article" class="form-control" placeholder="Article"
                                     type="text">{{ $content['article'] }}</textarea>
                             </div>
-
-
                             <div class="form-group">
                                 <a href="{{ url('cms/content') }}" class="btn btn-primary btn-block">
                                     Cancel

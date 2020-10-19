@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Http\Requests\SearchRequest;
 use Illuminate\Http\Request;
-use Cart, Session, DB;
+use Cart, Session;
 
 class ShopController extends MainController
 {

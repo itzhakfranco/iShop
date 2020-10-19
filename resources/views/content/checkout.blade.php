@@ -59,7 +59,6 @@
                                                 Remove</a>
                                         </td>
                                     </tr>
-
                                 @endforeach
                             </tbody>
                         </table>
@@ -68,7 +67,6 @@
                             <a href="{{ url('shop/order') }}" class="btn btn-primary float-md-right">
                                 Make Purchase <i class="fa fa-chevron-right"></i>
                             </a>
-
                             <a href="{{ url('') }}" class="btn btn-secondary">
                                 <i class="fa fa-chevron-left"></i> Continue shopping
                             </a>
@@ -77,7 +75,6 @@
                             </a>
                         </div>
                     </div>
-
                 </main>
             </div>
             <div class="row">

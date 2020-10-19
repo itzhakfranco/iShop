@@ -61,8 +61,6 @@
                                             @endif
 
                                         </div>
-
-
                                     </th>
                                     <th style="">Category
 
@@ -86,9 +84,7 @@
                                                     class="btn btn-sm btn-outline-primary"><i
                                                         class="fas fa-sort float-right"></i></a>
                                             @endif
-
                                         </div>
-
                                     </th>
                                     <th style="width: 110px">
                                         Price
@@ -131,7 +127,6 @@
                                         <td>
                                             {{ $product->product_name }}
                                         </td>
-
                                         <td>
                                             {{ $product->posted_by }}
                                         </td>
@@ -139,7 +134,6 @@
                                         <td class="text-center">
                                             ${{ $product->price }}
                                         </td>
-
                                         <td class="text-center">
                                             <a href="{{ url('cms/products/' . $product->id . '/edit') }}"
                                                 class="btn btn-primary btn-block btn-sm"><i class="far fa-edit"></i>
@@ -149,12 +143,10 @@
                                                 class="btn btn-danger btn-block btn-sm mb-3">
                                                 <i class="fas fa-trash"></i> Delete
                                             </button>
-
                                             <input class="toggle-featured" type="checkbox" data-toggle="toggle"
                                                 data-on="Featured" data-id="{{ $product->id }}" data-off="Not Featured"
                                                 data-style="slow" data-onstyle="success" data-offstyle="secondary"
                                                 {{ $product->featured == 1 ? 'checked' : '' }} />
-
                                         </td>
                                     </tr>
                                     <!-- Modal -->
@@ -193,11 +185,8 @@
                         </table>
                     </div>
                 </div>
-                <!-- end card-body -->
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
 
 @endsection

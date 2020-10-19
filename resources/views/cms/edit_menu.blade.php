@@ -25,7 +25,6 @@
                                 <input name="url" id="url" class="form-control target-text" placeholder="URL" type="text"
                                     value="{{ $menu['url'] }}" />
                             </div>
-
                             <div class="form-group">
                                 <a href="{{ url('cms/menu') }}" class="btn btn-primary btn-block">
                                     Cancel
@@ -37,8 +36,6 @@
                         </form>
                     </div>
                 </div>
-
-
             </section>
         </div>
     </div>

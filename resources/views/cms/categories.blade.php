@@ -3,9 +3,7 @@
     <div class="row">
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-4">
-
             <div class="card mb-3">
-
                 <div class="card-header">
                     <span class="float-right"><a href="{{ url('cms/categories/create') }}" class="btn btn-primary btn-sm"><i
                                 class="fas fa-plus"></i> Add New Category</a></span>
@@ -13,7 +11,6 @@
                 </div>
 
                 <div class="card-body">
-
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
@@ -74,20 +71,11 @@
                                         </div>
                                     </div>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
-
-
                 </div>
-                <!-- end card-body -->
-
             </div>
-            <!-- end card -->
-
         </div>
-        <!-- end col -->
-
     </div>
 @endsection

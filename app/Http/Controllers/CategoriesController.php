@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests\CategoryRequest;
 use App\Models\Categorie;
-
 use Session;
 
 class CategoriesController extends MainController

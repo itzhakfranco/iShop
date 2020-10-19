@@ -126,9 +126,7 @@
             <div class="container">
                 <div class="row mt-3 msg-box">
                     <div class="col-md-12">
-                        <div class="alert alert-success">
-                            {{ Session::get('msg') }}
-                        </div>
+                        <div class="alert alert-success">{{ Session::get('msg') }}</div>
                     </div>
                 </div>
             </div>
@@ -170,7 +168,6 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
-
 </body>
 
 </html>

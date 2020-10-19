@@ -7,12 +7,6 @@ use DB, Session;
 
 class Users extends Model
 {
-    static public function getUsers(&$data)
-    {
-        /*         $data['users'] = self::all('users');
- */
-    }
-
 
     static public function save_new($request)
     {

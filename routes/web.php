@@ -44,6 +44,7 @@ Route::prefix('user')->group(function () {
 # CMS
 Route::middleware(['cmsadmin'])->group(function () {
     Route::prefix('cms')->group(function () {
+
         Route::get('dashboard', [CmsController::class, 'dashboard']);
         Route::get('orders', [CmsController::class, 'orders']);
         Route::get('feature-product', [CmsController::class, 'featuredProductToggle']);
@@ -56,7 +57,6 @@ Route::middleware(['cmsadmin'])->group(function () {
         Route::resource('users', UsersController::class);
     });
 });
-
 
 # Pages
 Route::get('/', [PagesController::class, 'home']);

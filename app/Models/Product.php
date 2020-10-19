@@ -31,8 +31,8 @@ class Product extends Model
             $products = DB::table('products')
                 ->where('product_name', 'like', '%' . $request['q'] . '%')
                 ->get();
-            if (count($products) > 0) {
 
+            if (count($products) > 0) {
                 foreach ($products as $proudct) {
                     $cat = DB::table('categories')
                         ->where('id', '=', $proudct->categorie_id)
@@ -41,6 +41,7 @@ class Product extends Model
                     $output .= '<li>' . '<a href=' . url('') . '/shop/' . strtolower($cat) . '/' . $proudct->url . '>' . $proudct->product_name . '</a></li>';
                 }
             }
+
             $output .= '</ul>';
 
             if (count($products) > 0) return $output;
@@ -121,6 +122,7 @@ class Product extends Model
             ->where('products.featured', '=', '1')
             ->get()
             ->toArray();
+
         $data['products'] = $featured_product;
     }
 
@@ -228,18 +230,17 @@ class Product extends Model
     {
         $product_id = $request->product_id;
         $product = self::find($product_id);
-        if ($request->status == 0) {
 
-            $product->featured = 0;
-            $product->save();
-        } elseif ($request->status == 1) {
+        if($request->status == 0 || $request->status == 1 ){
 
-            $product->featured = 1;
+            $product->featured = !$product->featured;
             $product->save();
-        } else {
+
+        }else{
 
             abort(404);
         }
+       
     }
 
     static public function update_product_image($request)
@@ -252,6 +253,6 @@ class Product extends Model
 
         $product->image = $image_name;
         $product->save();
-        Session::flash('msg', 'Profile image has been updated');
+        Session::flash('msg', 'Product image has been updated');
     }
 }

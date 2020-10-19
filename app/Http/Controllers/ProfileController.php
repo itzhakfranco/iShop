@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Http\Requests\RegisterRequest;
-use App\Http\Requests\SigninRequest;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\UpdateImageRequest;
 use Illuminate\Http\Request;
@@ -24,9 +22,11 @@ class ProfileController extends UserController
     {
         User::update_profile($request);
         $user = User::find($request['user_id']);
-        if (!empty($request['password']) or $request['email'] !=  $user->email) {
+        if (!empty($request['password']) || $request['email'] !=  $user->email) {
+         
             Session::flush();
             return redirect('user/signin');
+            
         } else {
             return redirect('user/profile');
         }

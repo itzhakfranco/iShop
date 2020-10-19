@@ -13,7 +13,6 @@ class MainController extends Controller
 
     function __construct()
     {
-
         self::$data['menu'] = Menu::all()->toArray();
         self::$data['categories'] = Categorie::all()->toArray();
     }

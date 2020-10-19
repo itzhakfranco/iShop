@@ -29,7 +29,7 @@ class User extends Model
                 if ($user->role == 6) Session::put('is_admin', true);
                 Session::put('user_id', $user->id);
                 Session::put('user_name', $user->name);
-                Session::flash('msg', $user->name . ' Welcome Back');
+                Session::flash('msg', ucfirst(trans($user->name)) . ' Welcome Back');
             }
         }
         return $valid;

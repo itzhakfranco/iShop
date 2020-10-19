@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdateImageRequest;
 use App\Models\Categorie;
@@ -16,7 +15,6 @@ class ProductsController extends MainController
 
     public function index(Request $request)
     {
-
         Product::get_products(self::$data, $request);
         return view('cms.products', self::$data);
     }
@@ -38,7 +36,6 @@ class ProductsController extends MainController
 
     public function edit($id)
     {
-
         Product::get_product_by_id(self::$data, $id);
         return view('cms.edit_product', self::$data);
     }

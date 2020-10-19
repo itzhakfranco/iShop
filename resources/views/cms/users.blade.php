@@ -46,10 +46,7 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    {{ 'Are you sure you want to delete
-                                                                ' .
-                                                            $user->name .
-                                                            ' ?' }}
+                                                    {{ 'Are you sure you want to delete ' . $user->name . ' ?' }}
                                                     <p></p>
                                                 </div>
                                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST">
@@ -71,11 +68,8 @@
                         </table>
                     </div>
                 </div>
-                <!-- end card-body -->
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
 
 @endsection

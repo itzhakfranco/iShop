@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\SigninRequest;
-use App\Http\Requests\ProfileRequest;
-use App\Http\Requests\UpdateImageRequest;
-use Illuminate\Http\Request;
 use Session;
 
 class UserController extends MainController

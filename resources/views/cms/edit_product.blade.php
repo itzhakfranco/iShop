@@ -9,7 +9,6 @@
                             <h4 class="card-title d-flex mb-4">Edit Product</h4>
                         </div>
                         <div class="col-md-6">
-
                             <a class="btn btn-dark btn-sm float-right"
                                 href="{{ url('/shop/' . $product->cat_url . '/' . $product->url) }}" target="_blank">
                                 <i class="fas fa-binoculars mr-1"></i> View Product
@@ -57,8 +56,6 @@
                                 type="text">
                             {{ $product->article }}</textarea>
                         </div>
-
-
                         <div class="form-group">
                             <a href="{{ url('cms/products') }}" class="btn btn-primary btn-block">
                                 Cancel
