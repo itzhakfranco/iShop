@@ -94,4 +94,6 @@ class ShopController extends MainController
         Product::productsBySearch(self::$data, $request);
         return view('content.search', self::$data);
     }
+
+ 
 }

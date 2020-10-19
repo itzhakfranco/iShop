@@ -74,7 +74,7 @@
                                                         class="text">Checkout</span></a>
                                             @endif
                                             <a href="{{ url('shop' . '/' . $cat_url . '/' . $product['url']) }}"
-                                                class="btn btn-outline-primary mt-3">Details</a>
+                                                class="btn btn-outline-primary mt-2">Details</a>
                                         </div>
                                     </figcaption>
                                 </figure>

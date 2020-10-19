@@ -117,9 +117,10 @@ class Product extends Model
 
     static public function featured_products(&$data)
     {
-        $featured_product = DB::table('categories')
-            ->leftjoin('products', 'products.categorie_id', '=', 'categories.id')
-            ->where('products.featured', '=', '1')
+        $featured_product = DB::table('categories AS c')
+            ->leftjoin('products AS p', 'p.categorie_id', '=', 'c.id')
+            ->where('p.featured', '=', '1')
+            ->select('c.url as cat_url','p.image', 'p.url','p.product_name', 'p.price','p.id')
             ->get()
             ->toArray();
 
