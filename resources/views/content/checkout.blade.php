@@ -6,11 +6,11 @@
         </div>
     </section>
 
-    <div class="container">
-        <div class="row">
-            <main class="col-md-12 mt-2">
-                <div class="card">
-                    @if ($cart)
+    @if ($cart)
+        <div class="container">
+            <div class="row" style="height: 850px">
+                <main class="col-md-12 mt-2">
+                    <div class="card">
                         <table class="table table-borderless table-shopping-cart">
                             <thead class="text-muted">
                                 <tr class="small text-uppercase">
@@ -76,31 +76,38 @@
                                 Clear Cart
                             </a>
                         </div>
-                </div>
-            @else
-                <h1>no products</h1>
-                @endif
-            </main>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <dl class="dlist-align">
-                                    <dt>Total:</dt>
-                                    <dd class="text-right h5">
-                                        <strong>${{ Cart::getTotal() }}</strong>
-                                    </dd>
-                                </dl>
+                    </div>
+
+                </main>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <article class="border-top border-bottom">
+                                        <dl class="row mt-2">
+                                            <dt class="col-sm-10 mt-2">Total:</dt>
+                                            <dd class="col-sm-2 text-right mt-2"><strong
+                                                    class="h5 text-dark">${{ Cart::getTotal() }}</strong></dd>
+                                        </dl>
+                                    </article>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
+    @else
+        <div class="container">
+            <div class="row mt-4">
+                <div class="col-lg-12">
+                    <p class="h5">No Products Found in Cart</p>
+                </div>
+            </div>
+        </div>
 
+    @endif
 @endsection

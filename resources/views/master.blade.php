@@ -153,13 +153,11 @@
     <footer class="section-footer border-top bg">
         <div class="container">
             <section class="footer-bottom row">
-                <div class="col-md-8 text-md-center">
-                    <span class="px-2">iShop</span>
+                <div class="col-12 text-center">
+                    <span>iShop &copy; {{ date('Y') }}</span>
                 </div>
-
             </section>
         </div>
-
     </footer>
 
     <!-- custom javascript -->

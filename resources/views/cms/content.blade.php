@@ -23,7 +23,7 @@
                                     <tr>
                                         <td>{{ $item['title'] }}</td>
                                         <td class="text-center">
-                                            {{ $item['updated_at'] }}
+                                            {{ date('d-m-yy', strtotime($item['updated_at'])) }}
                                         </td>
 
                                         <td class="text-center">
@@ -51,10 +51,10 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    {{ 'Are you sure you want to delete
-                                                                    ' .
-                                                            $item['title'] .
-                                                            ' ?' }}
+                                                    {{ 'Are you sure you want to delete ' .
+                   $item['title'] .
+                   '
+               ?' }}
                                                     <p></p>
                                                 </div>
                                                 <form action="{{ route('content.destroy', $item['id']) }}" method="POST">
