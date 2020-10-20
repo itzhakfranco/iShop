@@ -1,10 +1,12 @@
 @extends('master') @section('main_content')
     <section class="section-content">
+        <section class="section-pagetop bg shadow-sm border-bottom">
+            <div class="container">
+                <h2 class="title-page"> Featured Products</h2>
+            </div>
+        </section>
         <div class="container">
-            <header class="section-heading">
-                <h3 class="section-title">Popular products</h3>
-            </header>
-            <div class="row">
+            <div class="row mt-3">
                 @foreach ($products as $product)
                 <div class="col-md-4">
                     <figure class="card card-product-grid">
