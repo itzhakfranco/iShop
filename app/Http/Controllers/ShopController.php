@@ -11,10 +11,10 @@ use Cart, Session;
 class ShopController extends MainController
 {
 
-    public function products($cat_url)
+    public function products(Request $request,$cat_url)
 
     {
-        Product::getProductsByCat($cat_url, self::$data);
+        Product::getProductsByCat($cat_url,$request, self::$data);
         return view('content.products', self::$data);
     }
 

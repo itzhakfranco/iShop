@@ -49,8 +49,17 @@ class Product extends Model
     }
 
 
-    static public function getProductsByCat($cat_url, &$data)
+    static public function getProductsByCat($cat_url, $request,&$data)
     {
+        if(!$request->query('view') || $request->query('view') == 'grid'){
+
+            $data['view'] = 'grid';
+            
+          }elseif($request->query('view') == 'list'){
+ 
+           $data['view'] = 'list';
+ 
+         }
 
         if ($category = Categorie::where('url', '=', $cat_url)->first()) {
 
@@ -58,6 +67,7 @@ class Product extends Model
                 $data['cat_url'] = $cat_url;
                 $data['sort_by'] = request()->sort ? request()->sort : 'low_high';
                 $data['title'] .= $category['cat_name'] . ' Products';
+                $data['products_count'] = count($products);
 
 
                 if (!request()->sort || request()->sort == 'low_high') {

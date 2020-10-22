@@ -48,13 +48,6 @@ class ProductsController extends MainController
     }
 
 
-    public function destroy($id)
-    {
-        Product::destroy($id);
-        Session::flash('msg', 'Product has been deleted');
-        return redirect('cms/products');
-    }
-
     public function updateProductImage(UpdateImageRequest $request)
     {
         Product::update_product_image($request);
