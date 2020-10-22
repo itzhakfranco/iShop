@@ -77,9 +77,9 @@
                 </div>
 
             @elseif($view == 'list')
-                <div class="row">
-                    <div class="col-md-12">
-                        @foreach ($products as $product)
+                @foreach ($products as $product)
+                    <div class="row">
+                        <div class="col-md-12">
                             <article class="card card-product-list">
                                 <div class="row no-gutters">
                                     <aside class="col-md-3">
@@ -98,23 +98,29 @@
                                                 <span class="price h5"> ${{ $product->price }} </span>
                                             </div>
                                             <p>
-                                                <a href="http://localhost:8888/iShop/public/shop/electronics/headphones"
-                                                    class="btn btn-primary btn-block mb-3"> Details </a>
-
-                                                <a class="btn btn-dark btn-block disabled" disabled="disabled">In
-                                                    Cart</a>
-                                                <a href="http://localhost:8888/iShop/public/shop/checkout"
-                                                    class="btn btn-success btn-block"><i
-                                                        class="fas fa-shopping-cart"></i><span
-                                                        class="text">Checkout</span></a>
+                                                @if (!Cart::get($product->id))
+                                                    <a data-id="{{ $product->id }}" href="#"
+                                                        class="btn btn-secondary btn-block add-to-cart-btn"><i
+                                                            class="fas fa-shopping-cart"></i>
+                                                        <span class="text">Add to Cart</span></a>
+                                                @else
+                                                    <a class="btn btn-dark btn-block disabled" disabled="disabled">In
+                                                        Cart</a>
+                                                    <a href="{{ url('shop/checkout') }}"
+                                                        class="btn btn-success btn-block"><i
+                                                            class="fas fa-shopping-cart"></i><span
+                                                            class="text">Checkout</span></a>
+                                                @endif
+                                                <a href="{{ url('shop' . '/' . $product->cat_url . '/' . $product->url) }}"
+                                                    class="btn btn-primary btn-block mt-2">Details</a>
                                             </p>
                                         </div>
                                     </aside>
                                 </div>
                             </article>
-                        @endforeach
+                        </div>
                     </div>
-                </div>
+                @endforeach
             @endif
         </div>
         </div>

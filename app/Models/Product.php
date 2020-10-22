@@ -86,13 +86,13 @@ class Product extends Model
 
     static public function featured_products($request,&$data)
     {
-        if(!$request->query('view') || $request->query('view') == 'grid'){
+        if(!$request->query('view') || $request->query('view') == 'list'){
 
-            $data['view'] = 'grid';
+            $data['view'] = 'list';
             
-          }elseif($request->query('view') == 'list'){
+          }elseif($request->query('view') == 'grid'){
  
-           $data['view'] = 'list';
+           $data['view'] = 'grid';
  
          }
 
