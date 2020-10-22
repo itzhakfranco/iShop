@@ -121,7 +121,7 @@
         </div>
     </nav>
 
-    <main>
+    <main style="min-height: 700px">
         @if (Session::has('msg'))
             <div class="container">
                 <div class="row mt-3 msg-box">
