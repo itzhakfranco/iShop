@@ -8,14 +8,13 @@ use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdateImageRequest;
 use App\Models\Categorie;
 use App\Models\Product;
-use Session;
 
 class ProductsController extends MainController
 {
 
     public function index(Request $request)
     {
-        Product::get_products(self::$data, $request);
+        Product::cms_get_products(self::$data, $request);
         return view('cms.products', self::$data);
     }
 

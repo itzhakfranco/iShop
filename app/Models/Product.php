@@ -84,18 +84,50 @@ class Product extends Model
         }
     }
 
-    static public function get_products(&$data, $request)
+    static public function featured_products($request,&$data)
     {
+        if(!$request->query('view') || $request->query('view') == 'grid'){
 
-        $products = DB::table('categories AS c')
-            ->select('c.cat_name', 'p.id', 'p.url', 'p.product_name', 'p.image', 'p.article', 'p.price', 'p.featured', 'u.name AS posted_by')
-            ->join('products AS p', 'p.categorie_id', '=', 'c.id')
-            ->join('users AS u', 'u.id', '=', 'p.user_id')
+            $data['view'] = 'grid';
+            
+          }elseif($request->query('view') == 'list'){
+ 
+           $data['view'] = 'list';
+ 
+         }
+
+        $featured_products = DB::table('categories AS c')
+            ->leftjoin('products AS p', 'p.categorie_id', '=', 'c.id')
+            ->where('p.featured', '=', '1')
+            ->select('c.url as cat_url','p.image', 'p.url','p.product_name', 'p.price','p.id','p.article')
             ->get();
+           
+
+            $data['products_count'] = count($featured_products);
+            $data['sort_by'] = request()->sort ? request()->sort : 'low_high';
+            $data['products'] = $featured_products;
 
 
+            if (!request()->sort || request()->sort == 'low_high') {
+                $data['products'] = $featured_products->sortBy('price');
+            } elseif (request()->sort == 'high_low') {
+                $data['products'] = $featured_products->sortByDesc('price');
+            } else {
+                abort(404);
+
+    }
+}
+
+    static public function cms_get_products(&$data, $request)
+    {
         $sortBy = $request->sortBy;
         $orderBy = $request->orderBy;
+
+        $products = DB::table('products AS p')
+        ->join('categories AS c', 'p.categorie_id', '=', 'c.id')
+        ->join('users AS u', 'u.id', '=', 'p.user_id')
+        ->select('c.cat_name', 'p.id', 'p.url', 'p.product_name', 'p.image', 'p.article', 'p.price', 'p.featured', 'u.name AS posted_by')
+        ->get();
 
         if (!empty($sortBy) && !empty($orderBy)) {
             if ($orderBy == 'asc') {
@@ -115,8 +147,8 @@ class Product extends Model
 
         $product = DB::table('products AS p')
             ->select('c.url AS cat_url', 'p.categorie_id', 'p.article', 'p.id', 'p.product_name', 'p.image', 'p.url', 'p.price')
-            ->join('categories AS c', 'p.categorie_id', '=', 'c.id')
             ->where('p.id', '=', $id)
+            ->join('categories AS c', 'p.categorie_id', '=', 'c.id')
             ->get()
             ->toArray();
 
@@ -124,19 +156,6 @@ class Product extends Model
         $data['categories'] = Categorie::all()->toArray();
         $data['product'] = $product[0];
     }
-
-    static public function featured_products(&$data)
-    {
-        $featured_product = DB::table('categories AS c')
-            ->leftjoin('products AS p', 'p.categorie_id', '=', 'c.id')
-            ->where('p.featured', '=', '1')
-            ->select('c.url as cat_url','p.image', 'p.url','p.product_name', 'p.price','p.id')
-            ->get()
-            ->toArray();
-
-        $data['products'] = $featured_product;
-    }
-
 
     static public function addToCart($id)
     {

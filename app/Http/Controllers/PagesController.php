@@ -8,10 +8,10 @@ use App\Models\Product;
 
 class PagesController extends MainController
 {
-    public function home()
+    public function home(Request $request)
     {
 
-        Product::featured_products(self::$data);
+        Product::featured_products($request, self::$data);
         self::$data['title'] .= 'Home Page';
         return view('content.home', self::$data);
     }

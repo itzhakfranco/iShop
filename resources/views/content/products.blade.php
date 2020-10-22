@@ -65,7 +65,8 @@
                                 <div class="col-md-4">
                                     <figure class="card card-product-grid">
                                         <div class="img-wrap">
-                                            <img src="{{ asset('images/' . $product['image']) }}" alt="'" />
+                                            <img src="{{ asset('images/' . $product['image']) }}"
+                                                alt="{{ $product['product_name'] }}" />
                                             <a class="btn-overlay"
                                                 href="{{ url('shop' . '/' . $cat_url . '/' . $product['url']) }}">Quick
                                                 view</a>
@@ -104,7 +105,7 @@
                                 <div class="row no-gutters">
                                     <aside class="col-md-3">
                                         <img style="width: 225px" src="{{ asset('images/' . $product['image']) }}"
-                                            alt="'" />
+                                            alt="{{ $product['product_name'] }}" />
                                     </aside>
                                     <div class="col-md-6">
                                         <div class="info-main">
