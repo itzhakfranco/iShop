@@ -15,7 +15,6 @@ class ShopController extends MainController
 
     {
         Product::getProductsByCat($cat_url, self::$data);
-
         return view('content.products', self::$data);
     }
 

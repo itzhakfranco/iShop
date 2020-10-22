@@ -35,6 +35,9 @@ $(".search-term").on("keyup", function () {
 
 $(document).ready(function () {
 	$(".msg-box").delay(2500).slideUp();
+	if ($('[data-toggle="tooltip"]').length > 0) {
+		$('[data-toggle="tooltip"]').tooltip();
+	}
 });
 
 $(".add-to-cart-btn").on("click", function () {

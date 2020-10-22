@@ -19,7 +19,7 @@
     </script>
 </head>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm mb-1">
         <div class="container">
             <a class="navbar-brand" href="{{ url('') }}">iShop 2.0 </a><button class="navbar-toggler" type="button"
                 data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -88,7 +88,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="main_nav">
+                    <div class="collapse navbar-collapse test2" id="main_nav">
                         <ul class="navbar-nav">
                             @foreach ($categories as $category)
                                 <li class="nav-item">
@@ -104,7 +104,7 @@
                 <div class="col-md-12 mt-3">
                     <form action="{{ url('shop/search') }}" method="POST">
                         {{ csrf_field() }} {{ method_field('POST') }}
-                        <div class="input-group">
+                        <div class="input-group input-group-search-term mb-1">
                             <input name="search_term" type="text" class="form-control search-term" placeholder="Search"
                                 autocomplete="off" />
                             <div id="response"></div>
@@ -121,7 +121,7 @@
         </div>
     </nav>
 
-    <main style="height: 850px">
+    <main>
         @if (Session::has('msg'))
             <div class="container">
                 <div class="row mt-3 msg-box">

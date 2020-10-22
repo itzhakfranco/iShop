@@ -31,7 +31,7 @@
                     </div>
                 </aside>
                 <main class="col-md-9">
-                    @if (count($products) > 1)
+                    @if (count($products) >= 1)
                         <header class="border-bottom mb-4 pb-3">
                             <div class="form-inline">
                                 <div class="btn-group" role="group">
@@ -74,7 +74,7 @@
                                                         class="text">Checkout</span></a>
                                             @endif
                                             <a href="{{ url('shop' . '/' . $cat_url . '/' . $product['url']) }}"
-                                                class="btn btn-outline-primary mt-2">Details</a>
+                                                class="btn btn-outline-primary">Details</a>
                                         </div>
                                     </figcaption>
                                 </figure>

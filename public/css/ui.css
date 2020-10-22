@@ -1403,11 +1403,7 @@ a[class*="card"]:hover .title {
     color: #fff;
 }
 
-/* ================== PAGES =================== */
-/* ================ PAGES HEADER ================== */
-.section-pagetop {
-    padding: 45px 0;
-}
+
 
 /* ================== PAGE DETAILS ==================  */
 .gallery-wrap .img-big-wrap {
