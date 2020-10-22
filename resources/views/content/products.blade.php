@@ -36,10 +36,10 @@
                             <div class="form-inline">
                                 <span class="mr-md-auto">{{ $products_count }} Items found </span>
                                 <div class="btn-group mr-2" role="group">
-                                    <a href="{{ Request::url() . '?sort=high_low' }}"
+                                    <a href="{{ Request::get('view') ? url()->full() . '&sort=high_low' : '?sort=high_low' }}"
                                         class="btn btn-sm btn-outline-primary {{ $sort_by == 'high_low' ? 'active' : '' }}">High
                                         To Low</a>
-                                    <a href="{{ Request::url() . '?sort=low_high' }}"
+                                    <a href="{{ Request::get('view') ? url()->full() . '&sort=low_high' : '?sort=low_high' }}"
                                         class="btn btn-sm btn-outline-primary {{ $sort_by == 'low_high' ? 'active' : '' }}">Low
                                         To High</a>
                                 </div>
@@ -56,7 +56,7 @@
 
                             </div>
                         </header>
-                    @elseif(count($products) == 0)
+                    @elseif($products_count == 0)
                         <h1>No products Found</h1>
                     @endif
                     @if ($view == 'grid')
@@ -109,7 +109,7 @@
                                     <div class="col-md-6">
                                         <div class="info-main">
                                             <a href="#" class="h5 title">{{ $product['product_name'] }}</a>
-                                            <p>{{ $product['article'] }}</p>
+                                            <p>{!! $product['article'] !!}</p>
                                         </div>
                                     </div>
                                     <aside class="col-sm-3">
@@ -120,7 +120,6 @@
                                             <p>
                                                 <a href="{{ url('shop' . '/' . $cat_url . '/' . $product['url']) }}"
                                                     class="btn btn-primary btn-block mb-3"> Details </a>
-
 
                                                 @if (!Cart::get($product['id']))
                                                     <a data-id="{{ $product['id'] }}" href="#"
