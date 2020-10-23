@@ -28,20 +28,19 @@ class Product extends Model
         if (trim(strlen($request['q'])) > 0) {
 
             $output = '<ul class="dropdown-menu" style="display:block;">';
-            $products = DB::table('products')
-                ->where('product_name', 'like', '%' . $request['q'] . '%')
-                ->get();
-
+            $products = DB::table('products AS p')
+            ->where('p.product_name', 'like', '%' . $request['q'] . '%')
+            ->join('categories AS c' ,'c.id','=','p.categorie_id')
+            ->select('p.*','c.url AS cat_url')
+            ->get();
             if (count($products) > 0) {
                 foreach ($products as $proudct) {
-                    $cat = DB::table('categories')
-                        ->where('id', '=', $proudct->categorie_id)
-                        ->first()
-                        ->cat_name;
-                    $output .= '<li>' . '<a href=' . url('') . '/shop/' . strtolower($cat) . '/' . $proudct->url . '>' . $proudct->product_name . '</a></li>';
+                    $output .= 
+                              '<li>' . '<a href=' . url('') . '/shop/' . 
+                               $proudct->cat_url . '/' . $proudct->url . 
+                               '>' . $proudct->product_name . '</a></li>';
                 }
             }
-
             $output .= '</ul>';
 
             if (count($products) > 0) return $output;
@@ -102,7 +101,6 @@ class Product extends Model
             ->select('c.url as cat_url','p.image', 'p.url','p.product_name', 'p.price','p.id','p.article')
             ->get();
            
-
             $data['products_count'] = count($featured_products);
             $data['sort_by'] = request()->sort ? request()->sort : 'low_high';
             $data['products'] = $featured_products;
