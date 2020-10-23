@@ -9,13 +9,14 @@ use Cart, Session, Image, DB;
 class Product extends Model
 {
 
-    static public function productsBySearch(&$data, $request)
+    static public function productsQuery(&$data, $request)
     {
-        $products = DB::table('products')
+        $products = DB::table('products AS p')
             ->where('product_name', 'like', '%' . $request->search_term . '%')
-            ->join('categories', 'categories.id', 'products.categorie_id')
-            ->select('products.id', 'products.user_id', 'products.image', 'products.categorie_id', 'products.product_name', 'products.article', 'products.url', 'products.price', 'categories.url as cat_url')
-            ->get()->toArray();
+            ->join('categories AS c', 'c.id', 'p.categorie_id')
+            ->select('p.*', 'c.url as cat_url')
+            ->get()
+            ->toArray();
 
         $data['title'] .= 'Search Results';
         $data['product_counts'] = count($products);
@@ -27,18 +28,18 @@ class Product extends Model
 
         if (trim(strlen($request['q'])) > 0) {
 
-            $output = '<ul class="dropdown-menu" style="display:block;">';
             $products = DB::table('products AS p')
             ->where('p.product_name', 'like', '%' . $request['q'] . '%')
             ->join('categories AS c' ,'c.id','=','p.categorie_id')
             ->select('p.*','c.url AS cat_url')
             ->get();
-            if (count($products) > 0) {
+            if ($products) {
+                $output = '<ul class="dropdown-menu" style="display:block;">';
                 foreach ($products as $proudct) {
-                    $output .= 
-                              '<li>' . '<a href=' . url('') . '/shop/' . 
-                               $proudct->cat_url . '/' . $proudct->url . 
-                               '>' . $proudct->product_name . '</a></li>';
+                $output .= 
+                            '<li>' . '<a href=' . url('') . '/shop/' . 
+                            $proudct->cat_url . '/' . $proudct->url . 
+                            '>' . $proudct->product_name . '</a></li>';
                 }
             }
             $output .= '</ul>';
@@ -94,11 +95,11 @@ class Product extends Model
            $data['view'] = 'grid';
  
          }
-
-        $featured_products = DB::table('categories AS c')
-            ->leftjoin('products AS p', 'p.categorie_id', '=', 'c.id')
+         
+        $featured_products = DB::table('products AS p')
+            ->leftjoin('categories AS c', 'p.categorie_id', '=', 'c.id')
             ->where('p.featured', '=', '1')
-            ->select('c.url as cat_url','p.image', 'p.url','p.product_name', 'p.price','p.id','p.article')
+            ->select('p.*','c.url as cat_url')
             ->get();
            
             $data['products_count'] = count($featured_products);
@@ -144,12 +145,11 @@ class Product extends Model
     {
 
         $product = DB::table('products AS p')
-            ->select('c.url AS cat_url', 'p.categorie_id', 'p.article', 'p.id', 'p.product_name', 'p.image', 'p.url', 'p.price')
+            ->select('p.*','c.url AS cat_url' )
             ->where('p.id', '=', $id)
             ->join('categories AS c', 'p.categorie_id', '=', 'c.id')
             ->get()
             ->toArray();
-
 
         $data['categories'] = Categorie::all()->toArray();
         $data['product'] = $product[0];

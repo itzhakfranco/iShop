@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 # Shop
 Route::prefix('shop')->group(function () {
-    Route::post('autocomplete', [ShopController::class, 'autoComplete']);
     Route::get('add-to-cart', [ShopController::class, 'addToCart']);
     Route::get('checkout', [ShopController::class, 'checkout']);
     Route::get('clear-cart', [ShopController::class, 'clearCart']);
@@ -23,7 +22,8 @@ Route::prefix('shop')->group(function () {
     Route::get('order', [ShopController::class, 'order']);
     Route::get('remove-item/{id}', [ShopController::class, 'removeItem']);
     Route::get('checkout', [ShopController::class, 'checkout']);
-    Route::post('search', [ShopController::class, 'search']);
+    Route::post('search', [ShopController::class, 'productsQuery']);
+    Route::post('autocomplete', [ShopController::class, 'autoComplete']);
     Route::get('{cat_url}', [ShopController::class, 'products']);
     Route::get('{cat_url}/{prd_url}', [ShopController::class, 'item']);
 });
@@ -44,7 +44,7 @@ Route::prefix('user')->group(function () {
 # CMS
 Route::middleware(['cmsadmin'])->group(function () {
     Route::prefix('cms')->group(function () {
-
+        
         Route::get('dashboard', [CmsController::class, 'dashboard']);
         Route::get('orders', [CmsController::class, 'orders']);
         Route::get('feature-product', [CmsController::class, 'featuredProductToggle']);

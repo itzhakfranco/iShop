@@ -106,6 +106,7 @@ $(".search-term").keyup(function () {
 				q: query,
 			},
 			success: function (data) {
+				$("#response").fadeIn();
 				$("#response").html(data);
 			},
 		});

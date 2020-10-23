@@ -23,8 +23,7 @@ class ShopController extends MainController
 
         if ($product = Product::where('url', '=', $prd_url)->first()) {
 
-            $product = $product->toArray();
-            self::$data['title'] .= $product['product_name'];
+            self::$data['title'] .= $product->product_name;
             self::$data['product'] = $product;
             return view('content.item', self::$data);
         } else {
@@ -87,10 +86,9 @@ class ShopController extends MainController
     }
 
 
-    public function search(SearchRequest $request)
+    public function productsQuery(SearchRequest $request)
     {
-
-        Product::productsBySearch(self::$data, $request);
+        Product::productsQuery(self::$data, $request);
         return view('content.search', self::$data);
     }
 
