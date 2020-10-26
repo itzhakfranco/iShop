@@ -105,18 +105,35 @@ $(".search-term").keyup(function () {
 				search: 1,
 				q: query,
 			},
-			success: function (data) {
-				$("#response").fadeIn();
-				$("#response").html(data);
+			success: function (response) {
+				let output = '<ul class="dropdown-menu" style="display:block;">';
+				if (response) {
+					$.each(response, function (key, value) {
+						output +=
+							"<li>" +
+							"<a href=" +
+							BASE_URL +
+							"/shop/" +
+							value.cat_url +
+							"/" +
+							value.url +
+							">" +
+							value.product_name +
+							"</a></li>";
+					});
+					output += "</ul>";
+					$("#response").fadeIn();
+					$("#response").html(output);
+				}
 			},
 		});
 	}
 	if (query.length === 0) {
 		$("#response").empty();
 	}
-});
 
-$(document).on("click", "li", function () {
-	$(".search-term").val($(this).text());
-	$("#response").fadeOut();
+	$(document).on("click", "li", function () {
+		$(".search-term").val($(this).text());
+		$("#response").fadeOut();
+	});
 });

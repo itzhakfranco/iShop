@@ -33,18 +33,8 @@ class Product extends Model
             ->join('categories AS c' ,'c.id','=','p.categorie_id')
             ->select('p.*','c.url AS cat_url')
             ->get();
-            if ($products) {
-                $output = '<ul class="dropdown-menu" style="display:block;">';
-                foreach ($products as $proudct) {
-                $output .= 
-                            '<li>' . '<a href=' . url('') . '/shop/' . 
-                            $proudct->cat_url . '/' . $proudct->url . 
-                            '>' . $proudct->product_name . '</a></li>';
-                }
-            }
-            $output .= '</ul>';
 
-            if (count($products) > 0) return $output;
+            if (count($products) > 0) return response()->json($products);
         }
     }
 
